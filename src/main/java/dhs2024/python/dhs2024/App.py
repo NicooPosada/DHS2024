@@ -3,6 +3,7 @@ from Escucha import Escucha
 from antlr4 import *
 from compiladoresLexer  import compiladoresLexer
 from compiladoresParser import compiladoresParser
+from Walker import Walker
 
 
 def main(argv):
@@ -16,7 +17,9 @@ def main(argv):
     escucha = Escucha()
     parser.addParseListener(escucha)
     tree = parser.programa()
-    print(tree.toStringTree(recog=parser))
+    #print(tree.toStringTree(recog=parser))
+    caminante = Walker()
+    caminante.visitPrograma(tree)
 
 if __name__ == '__main__':
     main(sys.argv)
